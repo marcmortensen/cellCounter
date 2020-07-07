@@ -13,7 +13,5 @@ This project is intended to be used with the latest Active LTS release of [Node.
 + `test` - run tests,
 + `test:watch` - interactive watch mode to automatically re-run tests
 
-## Additional Informations
-
 ## License
 Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/master/LICENSE) file for details.
