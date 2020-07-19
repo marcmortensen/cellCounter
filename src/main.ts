@@ -1,5 +1,5 @@
 import { IConfigurationApp } from './common/types';
-import {ImageJLoader} from "./imageJLoader/imageJ"
+import {ImageJLoader} from "./imageJLoader/loader"
 import {EventEmitter} from 'events';
 
 
@@ -9,12 +9,10 @@ const config: IConfigurationApp = {
   }
 };
 
-console.log('==> Starting ImageJ')
 const event = new EventEmitter();
 
-
 event.on('booting', () => {
-  console.log('starting Fiji!');
+  console.log('==> Starting ImageJ');
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
