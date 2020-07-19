@@ -1,9 +1,7 @@
 
 export interface IConfigurationApp {
     imageJ: {
-      // Should the imageJ instance run in GUI mode
-      headless: boolean,
-      // Where is imageJ app located
+      // Where is imageJ app located on your machine
       imageJDir: string
-    };
+    }
   }
