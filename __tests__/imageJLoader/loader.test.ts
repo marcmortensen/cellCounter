@@ -1,11 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import {ImageJLoader} from '../../src/imageJLoader/loader';
 import { IConfigurationApp } from '../../src/common/types';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const nodeJavaCore = require('java');
 import {EventEmitter} from 'events';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+const nodeJavaCore = require('java');
 const addToClassPath = require('../../src/imageJLoader/helper');
-
 
 interface ImockedImageJClass {
     a: string;
@@ -18,6 +16,10 @@ describe('ImageJ loader', () => {
     imageJLoader = new ImageJLoader();
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  
   it('loadImageJ should throw an emit with the object ImageJLoaded', () => {
 
     const config: IConfigurationApp = { 

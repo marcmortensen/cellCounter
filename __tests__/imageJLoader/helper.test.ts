@@ -1,11 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs'); 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const nodeJavaCore = require('java');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+
 const addToClassPath = require('../../src/imageJLoader/helper');
 
 describe('Testing helping function used when loading imageJ', () => {
+  
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   
   it('addToClasspath should search all the jars inside a folder and insert them into nodeJava', () => {
 
