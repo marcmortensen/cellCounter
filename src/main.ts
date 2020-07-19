@@ -1,5 +1,5 @@
-import { IConfigurationApp } from './common/types';
-import {ImageJLoader} from "./imageJLoader/loader"
+import {IConfigurationApp} from './common/types';
+import {ImageJLoader} from './imageJLoader/loader';
 import {EventEmitter} from 'events';
 
 
