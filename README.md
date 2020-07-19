@@ -13,5 +13,11 @@ This project is intended to be used with the latest Active LTS release of [Node.
 + `test` - run tests,
 + `test:watch` - interactive watch mode to automatically re-run tests
 
+## TODO
+
+* add .env so we can load config from there.
+* add test using .env so we can know for sure that the config is good, and that the imageJ behaves as expected (filter gauss on clown.jpg).
+* start implement cell counter using imageJ
+
 ## License
 Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/master/LICENSE) file for details.
