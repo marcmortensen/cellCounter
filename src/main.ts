@@ -16,18 +16,10 @@ event.on('booting', () => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-event.on('ready', (ij : any) =>  {
+event.on('ready', async (ij : any) =>  {
 
-  const source = '/home/marcm/Documents/Projects/imageJ/cellCounter/__tests__/img/clown.jpg';
-  console.log('==> Loading image: ' + source);
-  const dataset = ij.io().open(source);
-  console.log('==> Processing image');
-  const filtered = ij.op().run('filter.gauss', dataset, [8, 10, 1]);
-  const outPath = 'blurry-clown.png';
-  console.log('==> Saving image: ' + outPath);
-  ij.scifio().datasetIO().save(filtered, outPath);
-  console.log('==> Goodbye!');
-  ij.context().dispose();
+  const gauss = await import('../src/filterGauss/main');
+  gauss.start(ij);
 
 })
 
