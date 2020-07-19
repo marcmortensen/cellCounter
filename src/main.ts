@@ -1,31 +1,28 @@
-/**
- * Some predefined delays (in milliseconds).
- */
-export enum Delays {
-  Short = 500,
-  Medium = 2000,
-  Long = 5000,
-}
+import { IConfigurationApp } from './common/types';
+import ImageJ = require("./imageJ")
 
-/**
- * Returns a Promise<string> that resolves after given time.
- *
- * @param {string} name - A name.
- * @param {number=} [delay=Delays.Medium] - Number of milliseconds to delay resolution of the Promise.
- * @returns {Promise<string>}
- */
-function delayedHello(
-  name: string,
-  delay: number = Delays.Medium,
-): Promise<string> {
-  return new Promise((resolve: (value?: string) => void) =>
-    setTimeout(() => resolve(`Hello, ${name}`), delay),
-  );
-}
 
-// Below are examples of using ESLint errors suppression
-// Here it is suppressing missing return type definitions for greeter function
+const config: IConfigurationApp = { 
+  imageJ:{
+    headless: true,
+    imageJDir: '/home/marcm/Documents/Projects/imageJ/fiji-linux64/Fiji.app'
+  }
+};
 
-export async function greeter(name: string): Promise<string> {
-  return await delayedHello(name, Delays.Long);
-}
+console.log('==> Starting ImageJ')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const imagej = ImageJ(config)
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+imagej.on('ready', function(ij : any) {
+  const source = 'https://imagej.net/images/clown.jpg'
+  console.log('==> Loading image: ' + source)
+  const dataset = ij.io().open(source)
+  console.log('==> Processing image')
+  const filtered = ij.op().run('filter.gauss', dataset, [8, 10, 1])
+  const outPath = 'blurry-clown.png'
+  console.log('==> Saving image: ' + outPath)
+  ij.scifio().datasetIO().save(filtered, outPath)
+  console.log('==> Goodbye!')
+  ij.context().dispose()
+})
