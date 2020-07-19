@@ -5,7 +5,7 @@ import {EventEmitter} from 'events';
 
 const config: IConfigurationApp = { 
   imageJ:{
-    imageJDir: '/home/marcm/Documents/Projects/imageJ/fiji-linux64'
+    imageJDir: process.env.IMAGEJ_DIRECTORY_INSTALLED
   }
 };
 
@@ -18,7 +18,7 @@ event.on('booting', () => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 event.on('ready', (ij : any) =>  {
 
-  const source = '/home/marcm/Documents/Projects/imageJ/cellCounter/img/clown.jpg';
+  const source = '/home/marcm/Documents/Projects/imageJ/cellCounter/__tests__/img/clown.jpg';
   console.log('==> Loading image: ' + source);
   const dataset = ij.io().open(source);
   console.log('==> Processing image');

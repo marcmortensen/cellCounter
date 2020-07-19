@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import {ImageJLoader} from '../../src/imageJLoader/loader';
-import { IConfigurationApp } from '../../src/common/types';
+import {ImageJLoader} from '../../../src/imageJLoader/loader';
+import { IConfigurationApp } from '../../../src/common/types';
 import {EventEmitter} from 'events';
 const nodeJavaCore = require('java');
-const addToClassPath = require('../../src/imageJLoader/helper');
+const addToClassPath = require('../../../src/imageJLoader/helper');
 
 interface ImockedImageJClass {
     a: string;

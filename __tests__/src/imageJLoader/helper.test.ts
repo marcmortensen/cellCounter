@@ -2,7 +2,7 @@
 const fs = require('fs'); 
 const nodeJavaCore = require('java');
 
-const addToClassPath = require('../../src/imageJLoader/helper');
+const addToClassPath = require('../../../src/imageJLoader/helper');
 
 describe('Testing helping function used when loading imageJ', () => {
   
