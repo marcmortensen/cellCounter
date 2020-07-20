@@ -24,7 +24,8 @@ describe('ImageJ loader', () => {
 
     const config: IConfigurationApp = { 
       imageJ:{
-        imageJDir: 'fooDirectory'
+        dir: 'fooDirectory',
+        algorithmToRun: ''
       }
     };
     addToClassPath.addToClassPath = jest.fn();

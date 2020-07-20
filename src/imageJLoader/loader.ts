@@ -10,7 +10,7 @@ class ImageJLoader {
     event: EventEmitter
     ): void => {
 
-      addToClassPath(config.imageJ.imageJDir);
+      addToClassPath(config.imageJ.dir);
 
       NodeJavaCore.asyncOptions = {
         asyncSuffix: 'Later',
