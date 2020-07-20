@@ -1,5 +1,5 @@
-import { AlgorithmSelector } from '../../../../src/algorithmSelector/main';
-import { skipTestOnCondition } from '../../../testHelpers/skipTestOnCondition';
+import { skipTestOnCondition } from '../../../../../testHelpers/skipTestOnCondition';
+import { AlgorithmApplier } from '../../../../../../src/algorithm/algorithmApplier/algorithmApplier';
 
 describe('ImageJ Gauss Run', () => {
 
@@ -25,7 +25,7 @@ describe('ImageJ Gauss Run', () => {
   it('filter gauss should apply a filter gauss and save the image', () => {
     
     process.env.USE_OTHER_CODE_PATH = 'filterGauss'
-    const imageJLoader = new AlgorithmSelector();
+    const imageJLoader = new AlgorithmApplier();
     imageJLoader.runWithConfig();
     expect(1).toBe(1);
   });

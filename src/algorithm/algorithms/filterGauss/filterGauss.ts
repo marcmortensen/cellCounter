@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const start = (ij: any) :void => {
+import { AlgorithmToRun } from '../../../common/types';
+
+export class FilterGauss extends AlgorithmToRun {
+
+  start(ij: any): void {
     const source = '/home/marcm/Documents/Projects/imageJ/cellCounter/__tests__/img/clown.jpg';
     console.log('==> Loading image: ' + source);
     const dataset = ij.io().open(source);
@@ -12,8 +16,8 @@ const start = (ij: any) :void => {
     ij.scifio().datasetIO().save(filtered, outPath);
     console.log('==> Goodbye!');
     ij.context().dispose();
-  }
+  } 
 
-  export {start};
+}
 
 

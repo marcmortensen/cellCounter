@@ -7,3 +7,14 @@ export interface IConfigurationApp {
       algorithmToRun: string
     }
   }
+
+export abstract class AlgorithmToRun {
+    name: string;
+    
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    abstract start(any): void;
+}

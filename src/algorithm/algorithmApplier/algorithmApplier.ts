@@ -1,8 +1,9 @@
-import {IConfigurationApp} from '../common/types';
-import {ImageJLoader} from '../imageJLoader/loader';
+import {IConfigurationApp, AlgorithmToRun} from '../../common/types';
+import {ImageJLoader} from '../../imageJLoader/loader';
 import {EventEmitter} from 'events';
+import AlgorithmClassFetcher from '../algorithmClassFetcher/algorithmClassFetcher';
 
-class AlgorithmSelector {
+class AlgorithmApplier {
 
   event: EventEmitter;
 
@@ -16,7 +17,8 @@ class AlgorithmSelector {
     this.event.on('ready', async (ij : any) =>  {
   
       try {
-          const code = await import('../../src/' + process.env.IMAGEJ_RUN_ALGORITHM + '/main');
+          const algorithmToRun: string = process.env.IMAGEJ_RUN_ALGORITHM;
+          const code = new AlgorithmClassFetcher(algorithmToRun, algorithmToRun) as AlgorithmToRun;
           code.start(ij);
       } catch (e) {
           console.error(e);
@@ -40,4 +42,4 @@ class AlgorithmSelector {
 
 }
 
-export {AlgorithmSelector};
+export {AlgorithmApplier};
