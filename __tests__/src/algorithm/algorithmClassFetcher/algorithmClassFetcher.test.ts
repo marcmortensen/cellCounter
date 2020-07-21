@@ -1,4 +1,4 @@
-import AlgorithmClassFetcher from '../../../../src/algorithm/algorithmClassFetcher/algorithmClassFetcher';
+import {AlgorithmClassFetcher} from '../../../../src/algorithm/algorithmClassFetcher/algorithmClassFetcher';
 import { FilterGauss } from '../../../../src/algorithm/algorithms/filterGauss/filterGauss';
 import { AlgorithmToRun } from '../../../../src/common/types';
 

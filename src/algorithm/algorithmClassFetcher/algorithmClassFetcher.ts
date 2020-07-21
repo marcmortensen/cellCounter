@@ -12,4 +12,4 @@ class AlgorithmClassFetcher {
     }
 }
 
-export default AlgorithmClassFetcher;
+export {AlgorithmClassFetcher};

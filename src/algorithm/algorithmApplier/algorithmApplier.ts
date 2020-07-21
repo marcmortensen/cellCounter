@@ -1,7 +1,7 @@
 import {IConfigurationApp, AlgorithmToRun} from '../../common/types';
 import {ImageJLoader} from '../../imageJLoader/loader';
 import {EventEmitter} from 'events';
-import AlgorithmClassFetcher from '../algorithmClassFetcher/algorithmClassFetcher';
+import {AlgorithmClassFetcher} from '../algorithmClassFetcher/algorithmClassFetcher';
 
 class AlgorithmApplier {
 
