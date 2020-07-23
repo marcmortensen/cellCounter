@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 import {ImageJLoader} from '../../../src/imageJLoader/loader';
 import { IConfigurationApp } from '../../../src/common/types';
 import {EventEmitter} from 'events';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const nodeJavaCore = require('java');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const addToClassPath = require('../../../src/imageJLoader/helper');
-
-interface ImockedImageJClass {
-    a: string;
-}
 
 describe('ImageJ loader', () => {
 
   let imageJLoader: ImageJLoader;
+
   beforeEach(() => {
     imageJLoader = new ImageJLoader();
   });
@@ -38,8 +37,8 @@ describe('ImageJ loader', () => {
 
     const javaSystem = jest.spyOn(javaLangSystemImportedClass, 'setProperty');
 
-    const dummyImageJClassLoaded: ImockedImageJClass = { 
-        a: 'I have successfully loaded the java class imageJ' 
+    const dummyImageJClassLoaded = { 
+        foo: 'I have successfully loaded the java class imageJ' 
     };
 
     const importJavaClassFn = 

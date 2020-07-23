@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require('fs'); 
-const nodeJavaCore = require('java');
+import { addToClassPath } from "../../../src/imageJLoader/helper";
 
-const addToClassPath = require('../../../src/imageJLoader/helper');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const fs = require('fs'); 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const nodeJavaCore = require('java');
 
 describe('Testing helping function used when loading imageJ', () => {
   
@@ -28,7 +29,7 @@ describe('Testing helping function used when loading imageJ', () => {
 
     const pushJarIntoJavaFn = jest.spyOn(nodeJavaCore.classpath, 'push');
 
-    addToClassPath.addToClassPath('/fooPath');
+    addToClassPath('/fooPath');
     expect(pushJarIntoJavaFn).toHaveBeenCalledTimes(3);
     expect(pushJarIntoJavaFn).toBeCalledWith('/fooPath/FolderName_1/FolderName_2/fooBar-12.1.jar');
     expect(pushJarIntoJavaFn).toBeCalledWith('/fooPath/FolderName_1/OMEVisual-1.1.2.jar');

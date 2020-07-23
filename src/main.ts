@@ -1,4 +1,4 @@
-import { AlgorithmApplier } from './algorithm/algorithmApplier/algorithmApplier';
+import { AlgorithmApplier } from './algorithmLoader/algorithmApplier/algorithmApplier';
 
 const imageJ = new AlgorithmApplier();
 imageJ.runWithConfig();

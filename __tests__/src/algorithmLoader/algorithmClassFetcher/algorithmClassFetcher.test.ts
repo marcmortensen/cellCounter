@@ -6,6 +6,10 @@ describe('AlgorithmClass Fetcher testing', () => {
 
   let classFetcher: AlgorithmClassFetcher;
   
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  
   it('should return the Gauss expected class', () => {
 
     classFetcher = new AlgorithmClassFetcher('FilterGauss', 'FilterGauss');

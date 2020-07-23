@@ -30,7 +30,7 @@ jest.mock('../../../../src/imageJLoader/loader', () => {
     ImageJLoader : jest.fn().mockImplementation(
       () => { return  {
         load(_config: IConfigurationApp, event: EventEmitter): void {
-          event.emit('ready', 'ImageJObject')
+          event.emit('ready', 'ImageJObject');
         }
 
       }})
