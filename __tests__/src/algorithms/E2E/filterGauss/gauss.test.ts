@@ -24,7 +24,7 @@ describe('ImageJ Gauss Run', () => {
 
   it('filter gauss should apply a filter gauss and save the image', () => {
     
-    process.env.USE_OTHER_CODE_PATH = 'filterGauss'
+    process.env.IMAGEJ_RUN_ALGORITHM = 'FilterGauss'
     const imageJLoader = new AlgorithmApplier();
     imageJLoader.runWithConfig();
     expect(1).toBe(1);
