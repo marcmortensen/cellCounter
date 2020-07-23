@@ -1,6 +1,10 @@
 import { AlgorithmToRun, IConfigurationApp } from '../../../../src/common/types';
 import {EventEmitter} from 'events';
 import { AlgorithmApplier } from '../../../../src/algorithmLoader/algorithmApplier/algorithmApplier';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const loadImagesFromPath = require('../../../../src/imageLoader/imageLoader');
+
+loadImagesFromPath.loadImagesFromPath = jest.fn().mockReturnValue([]);
 
 const consoleLog = jest
   .spyOn(console, 'log')

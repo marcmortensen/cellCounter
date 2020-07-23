@@ -25,7 +25,7 @@ class ImageJLoader {
       System.setProperty('java.awt.headless', 'true')
       
       const ImageJObject = NodeJavaCore.import('net.imagej.ImageJ')
-      event.emit('ready', ImageJObject())
+      event.emit('ready', ImageJObject(), config.imageJ.algorithmToRun)
   }
 }
 

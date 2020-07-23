@@ -14,13 +14,10 @@ class AlgorithmApplier {
     });
   
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this.event.on('ready', async (ij : any) =>  {
+    this.event.on('ready', async (ij : any, algorithmToRun: string) =>  {
   
       try {
-          const algorithmToRun: string = process.env.IMAGEJ_RUN_ALGORITHM;
           const code = new AlgorithmClassFetcher(algorithmToRun, algorithmToRun) as AlgorithmToRun;
-          // eslint-disable-next-line no-debugger
-          debugger;
           code.start(ij);
       } catch (e) {
           console.error(e);

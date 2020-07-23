@@ -1,6 +1,8 @@
 import { AlgorithmToRun, IConfigurationApp } from '../../../../src/common/types';
 import {EventEmitter} from 'events';
 import { AlgorithmApplier } from '../../../../src/algorithmLoader/algorithmApplier/algorithmApplier';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const loadImagesFromPath = require('../../../../src/imageLoader/imageLoader');
 
 class DummyAlgorithmClass extends AlgorithmToRun {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -8,6 +10,8 @@ class DummyAlgorithmClass extends AlgorithmToRun {
     throw new Error('An error was thrown on the start method!');
   }
 } 
+
+loadImagesFromPath.loadImagesFromPath = jest.fn().mockReturnValue([]);
 
 const consoleSpy = jest
   .spyOn(console, 'error')

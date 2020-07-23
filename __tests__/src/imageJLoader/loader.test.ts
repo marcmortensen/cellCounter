@@ -24,7 +24,7 @@ describe('ImageJ loader', () => {
     const config: IConfigurationApp = { 
       imageJ:{
         dir: 'fooDirectory',
-        algorithmToRun: ''
+        algorithmToRun: 'FooAlgorithm'
       }
     };
     addToClassPath.addToClassPath = jest.fn();
@@ -55,7 +55,7 @@ describe('ImageJ loader', () => {
 
     expect(eventEmit).toHaveBeenCalledTimes(2);
     expect(eventEmit).toBeCalledWith('booting');
-    expect(eventEmit).toBeCalledWith('ready', dummyImageJClassLoaded);
+    expect(eventEmit).toBeCalledWith('ready', dummyImageJClassLoaded, 'FooAlgorithm');
   });
 
 });
