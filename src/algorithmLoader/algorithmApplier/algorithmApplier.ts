@@ -1,7 +1,7 @@
 import {IConfigurationApp, AlgorithmToRun} from '../../common/types';
 import {ImageJLoader} from '../../imageJLoader/loader';
 import {EventEmitter} from 'events';
-import {AlgorithmClassFetcher} from '../algorithmClassFetcher/algorithmClassFetcher';
+import { AlgorithmClassFetcher } from '../algorithmClassFetcher/algorithmClassFetcher';
 
 class AlgorithmApplier {
 
@@ -19,6 +19,8 @@ class AlgorithmApplier {
       try {
           const algorithmToRun: string = process.env.IMAGEJ_RUN_ALGORITHM;
           const code = new AlgorithmClassFetcher(algorithmToRun, algorithmToRun) as AlgorithmToRun;
+          // eslint-disable-next-line no-debugger
+          debugger;
           code.start(ij);
       } catch (e) {
           console.error(e);

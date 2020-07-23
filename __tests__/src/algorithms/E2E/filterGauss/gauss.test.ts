@@ -1,5 +1,5 @@
-import { skipTestOnCondition } from '../../../../../testHelpers/skipTestOnCondition';
-import { AlgorithmApplier } from '../../../../../../src/algorithm/algorithmApplier/algorithmApplier';
+import { skipTestOnCondition } from "../../../../testHelpers/skipTestOnCondition";
+import { AlgorithmApplier } from '../../../../../src/algorithmLoader/algorithmApplier/algorithmApplier';
 
 describe('ImageJ Gauss Run', () => {
 

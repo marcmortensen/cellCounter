@@ -1,6 +1,6 @@
-import {AlgorithmClassFetcher} from '../../../../src/algorithm/algorithmClassFetcher/algorithmClassFetcher';
-import { FilterGauss } from '../../../../src/algorithm/algorithms/filterGauss/filterGauss';
 import { AlgorithmToRun } from '../../../../src/common/types';
+import { AlgorithmClassFetcher } from '../../../../src/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher';
+import { FilterGauss } from '../../../../src/algorithms/filterGauss/filterGauss';
 
 describe('AlgorithmClass Fetcher testing', () => {
 

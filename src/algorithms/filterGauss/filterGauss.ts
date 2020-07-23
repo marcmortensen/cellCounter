@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { AlgorithmToRun } from '../../../common/types';
+import { AlgorithmToRun } from '../../common/types';
 
 export class FilterGauss extends AlgorithmToRun {
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {FilterGauss} from '../algorithms/filterGauss/filterGauss';
+import {FilterGauss} from '../../algorithms/filterGauss/filterGauss';
 
 const classes = {
   FilterGauss
