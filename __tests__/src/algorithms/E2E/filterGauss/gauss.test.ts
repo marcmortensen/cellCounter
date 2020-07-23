@@ -4,7 +4,7 @@ import { AlgorithmApplier } from '../../../../../src/algorithmLoader/algorithmAp
 describe('ImageJ Gauss Run', () => {
 
   const isImageJInstallPathSet :boolean = process.env.IMAGEJ_DIRECTORY_INSTALLED? true : false;
-  const isFlagE2Eup :boolean = process.env.JEST_RUN_E2E_TESTS === 'true';
+  const isFlagE2Eup :boolean = process.env.RUN_E2E_TESTS === 'true';
 
   skipTestOnCondition(
     !(isImageJInstallPathSet && isFlagE2Eup)
@@ -24,6 +24,8 @@ describe('ImageJ Gauss Run', () => {
 
   it('filter gauss should apply a filter gauss and save the image', () => {
     
+    process.env.INPUT_IMAGE_FOLDER='/home/marcm/Documents/Projects/imageJ/cellCounter/__tests__/img/filterGauss/'
+    process.env.OUTPUT_FOLDER='/home/marcm/Documents/Projects/imageJ/cellCounter/__tests__/img/filterGauss/'
     process.env.IMAGEJ_RUN_ALGORITHM = 'FilterGauss'
     const imageJLoader = new AlgorithmApplier();
     imageJLoader.runWithConfig();
