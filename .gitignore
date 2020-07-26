@@ -27,3 +27,6 @@ build/
 
 # Misc
 .DS_Store
+
+# Ignore all testing output images
+__tests__/**/output/
