@@ -1,5 +1,5 @@
 import { skipTestOnCondition } from "../../../../testHelpers/skipTestOnCondition";
-import { AlgorithmApplier } from '../../../../../src/algorithmLoader/algorithmApplier/algorithmApplier';
+import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
 
 describe('ImageJ Gauss Run', () => {
 
@@ -26,8 +26,7 @@ describe('ImageJ Gauss Run', () => {
     
     process.env.INPUT_IMAGE_FOLDER='/home/marcm/Documents/Projects/imageJ/cellCounter/__tests__/img/filterGauss/'
     process.env.OUTPUT_FOLDER='/home/marcm/Documents/Projects/imageJ/cellCounter/__tests__/img/filterGauss/'
-    process.env.IMAGEJ_RUN_ALGORITHM = 'FilterGauss'
-    const imageJLoader = new AlgorithmApplier();
+    const imageJLoader = new AlgorithmApplier('FilterGauss');
     imageJLoader.runWithConfig();
     expect(1).toBe(1);
   });

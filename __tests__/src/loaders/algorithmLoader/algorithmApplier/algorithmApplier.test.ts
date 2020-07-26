@@ -1,8 +1,9 @@
-import { AlgorithmToRun, IConfigurationApp } from '../../../../src/common/types';
 import {EventEmitter} from 'events';
-import { AlgorithmApplier } from '../../../../src/algorithmLoader/algorithmApplier/algorithmApplier';
+import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
+import { IConfigurationApp } from '../../../../../src/common/types';
+import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const loadImagesFromPath = require('../../../../src/imageLoader/imageLoader');
+const loadImagesFromPath = require('../../../../../src/loaders/imageLoader/imageLoader');
 
 loadImagesFromPath.loadImagesFromPath = jest.fn().mockReturnValue([]);
 
@@ -16,19 +17,25 @@ class DummyAlgorithmClass extends AlgorithmToRun {
   start(ij: string): void {
     console.log('some code to execute with the help of out freind ' + ij);
   }
+  hasValidInputConfig():boolean { return true;}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  loadConfig():void {}
 } 
 
 const algorithmDummyClass = new DummyAlgorithmClass('DummyClass');
 const mockAlgorithmClassStartFn = jest.spyOn(algorithmDummyClass, 'start')
+const mockAlgorithmClassHasValidInputConfigFn = jest.spyOn(algorithmDummyClass, 'hasValidInputConfig')
+const mockAlgorithmClassLoadConfigFn = jest.spyOn(algorithmDummyClass, 'loadConfig')
 
-jest.mock('../../../../src/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher', () => {
+jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher', () => {
   return {
     AlgorithmClassFetcher : jest.fn().mockImplementation(
       () => { return algorithmDummyClass })
   }
 });
 
-jest.mock('../../../../src/imageJLoader/loader', () => {
+jest.mock('../../../../../src/loaders/imageJLoader/loader', () => {
   return {
     ImageJLoader : jest.fn().mockImplementation(
       () => { return  {
@@ -41,17 +48,19 @@ jest.mock('../../../../src/imageJLoader/loader', () => {
   }
 });
 
-describe('Algorithm Applier', () => {
+describe('Algorithm Applier, with all the needed algorithToRun config!', () => {
  
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it('Upon event ready a dummy code should run', () => {
+  it('Upon event ready the code should run', () => {
 
-    const applier = new AlgorithmApplier();
+    const applier = new AlgorithmApplier('foo');
     applier.runWithConfig()
     expect(consoleLog).toBeCalledWith('==> Starting ImageJ');
+    expect(mockAlgorithmClassHasValidInputConfigFn).toBeCalled();
+    expect(mockAlgorithmClassLoadConfigFn).toBeCalled();
     expect(mockAlgorithmClassStartFn).toBeCalled();
     expect(consoleLog).toBeCalledWith('some code to execute with the help of out freind ImageJObject');
   });

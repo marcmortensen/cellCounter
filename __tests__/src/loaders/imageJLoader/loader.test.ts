@@ -1,11 +1,10 @@
-
-import {ImageJLoader} from '../../../src/imageJLoader/loader';
-import { IConfigurationApp } from '../../../src/common/types';
 import {EventEmitter} from 'events';
+import { ImageJLoader } from '../../../../src/loaders/imageJLoader/loader';
+import { IConfigurationApp } from '../../../../src/common/types';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const nodeJavaCore = require('java');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const addToClassPath = require('../../../src/imageJLoader/helper');
+const addToClassPath = require('../../../../src/loaders/imageJLoader/helper');
 
 describe('ImageJ loader', () => {
 
@@ -24,7 +23,6 @@ describe('ImageJ loader', () => {
     const config: IConfigurationApp = { 
       imageJ:{
         dir: 'fooDirectory',
-        algorithmToRun: 'FooAlgorithm'
       }
     };
     addToClassPath.addToClassPath = jest.fn();
@@ -55,7 +53,41 @@ describe('ImageJ loader', () => {
 
     expect(eventEmit).toHaveBeenCalledTimes(2);
     expect(eventEmit).toBeCalledWith('booting');
-    expect(eventEmit).toBeCalledWith('ready', dummyImageJClassLoaded, 'FooAlgorithm');
+    expect(eventEmit).toBeCalledWith('ready', dummyImageJClassLoaded);
   });
 
+  it('loadImageJ should throw an error if cant load java class imageJ', () => {
+
+    const config: IConfigurationApp = { 
+      imageJ:{
+        dir: 'fooDirectory',
+      }
+    };
+    addToClassPath.addToClassPath = jest.fn();
+    const event = new EventEmitter();
+
+    const eventEmit = jest.spyOn(event, 'emit');
+    const javaLangSystemImportedClass = {
+      setProperty: () => jest.fn()
+    };
+
+    const javaSystem = jest.spyOn(javaLangSystemImportedClass, 'setProperty');
+
+    const importJavaClassFn = jest.spyOn(nodeJavaCore, 'import')
+      .mockReturnValueOnce(javaLangSystemImportedClass)
+      .mockImplementation(() => {throw new Error('cant load imageJ java class')});
+
+    expect(() => {
+      imageJLoader.load(config, event)
+    }).toThrow('IMAGEJ_DIRECTORY_INSTALLED path on config did not lead to a valid folder where imageJ is installed');
+
+    expect(javaSystem).toBeCalledWith('java.awt.headless', 'true')
+
+    expect(importJavaClassFn).toHaveBeenCalledTimes(2);
+    expect(importJavaClassFn).toBeCalledWith('java.lang.System');
+
+    expect(eventEmit).toBeCalledWith('booting');
+    expect(eventEmit).toHaveBeenCalledTimes(1);
+  });
+  
 });

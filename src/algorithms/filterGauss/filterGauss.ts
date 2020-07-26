@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { AlgorithmToRun } from '../../common/types';
+import { AlgorithmToRun } from '../algorithmToRun';
 
 export class FilterGauss extends AlgorithmToRun {
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
   start(ij: any): void {
 
       this.config.inputImagesPath.forEach((pathImage) => {

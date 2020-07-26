@@ -1,7 +1,7 @@
 import {EventEmitter} from 'events';
-import {IConfigurationApp} from '../common/types';
 import NodeJavaCore = require('java');
 import {addToClassPath} from './helper';
+import { IConfigurationApp } from '../../common/types';
 
 class ImageJLoader {
 
@@ -23,9 +23,17 @@ class ImageJLoader {
 
       const System = NodeJavaCore.import('java.lang.System')
       System.setProperty('java.awt.headless', 'true')
-      
-      const ImageJObject = NodeJavaCore.import('net.imagej.ImageJ')
-      event.emit('ready', ImageJObject(), config.imageJ.algorithmToRun)
+      let ImageJObject;
+      try {
+        ImageJObject = NodeJavaCore.import('net.imagej.ImageJ');
+      } catch (e) {
+        
+          // eslint-disable-next-line no-debugger
+          debugger;
+          console.error(e.message);
+          throw new Error('IMAGEJ_DIRECTORY_INSTALLED path on config did not lead to a valid folder where imageJ is installed');
+      }   
+      event.emit('ready', ImageJObject())
   }
 }
 

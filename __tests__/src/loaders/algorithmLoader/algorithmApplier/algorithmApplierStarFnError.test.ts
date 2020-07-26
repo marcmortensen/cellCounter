@@ -1,35 +1,31 @@
-import { AlgorithmToRun, IConfigurationApp } from '../../../../src/common/types';
 import {EventEmitter} from 'events';
-import { AlgorithmApplier } from '../../../../src/algorithmLoader/algorithmApplier/algorithmApplier';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const loadImagesFromPath = require('../../../../src/imageLoader/imageLoader');
+import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
+import { IConfigurationApp } from '../../../../../src/common/types';
+import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
 
 class DummyAlgorithmClass extends AlgorithmToRun {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   start(_: string): void {
     throw new Error('An error was thrown on the start method!');
   }
+
+  hasValidInputConfig():boolean { return true;}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  loadConfig():void {}
 } 
-
-loadImagesFromPath.loadImagesFromPath = jest.fn().mockReturnValue([]);
-
-const consoleSpy = jest
-  .spyOn(console, 'error')
-  .mockImplementation((s :Error) => {
-    return s.message;
-  });
 
 const algorithmDummyClass = new DummyAlgorithmClass('DummyClass');
 const mockAlgorithmClassStartFn = jest.spyOn(algorithmDummyClass, 'start')
 
-jest.mock('../../../../src/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher', () => {
+jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher', () => {
   return {
     AlgorithmClassFetcher : jest.fn().mockImplementation(
       () => { return algorithmDummyClass })
   }
 });
 
-jest.mock('../../../../src/imageJLoader/loader', () => {
+jest.mock('../../../../../src/loaders/imageJLoader/loader', () => {
   return {
     ImageJLoader : jest.fn().mockImplementation(
       () => { return  {
@@ -41,19 +37,25 @@ jest.mock('../../../../src/imageJLoader/loader', () => {
   }
 });
 
-describe('Algorithm Applier when algortihmClassFetcher fails', () => {
+describe('Algorithm Applier when start fails', () => {
 
+  beforeEach( () => {
+    console.error = jest.fn(err => {
+      return err.message;
+    });
+  });
+  
   afterEach(() => {
     jest.clearAllMocks();
   });
  
-  it('Should catch exeception and display it', () => {
+  it('If an expection is thrown in the start function it should be catched and displayed', () => {
 
-    const applier = new AlgorithmApplier();
+    const applier = new AlgorithmApplier('foo');
     applier.runWithConfig()
     expect(mockAlgorithmClassStartFn).toBeCalled();
     expect(mockAlgorithmClassStartFn).toThrowError('An error was thrown on the start method!');
-    expect(consoleSpy).toReturnWith('An error was thrown on the start method!');
+    expect(console.error).toReturnWith('An error was thrown on the start method!');
   });
 
 });

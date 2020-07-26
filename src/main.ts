@@ -1,4 +1,9 @@
-import { AlgorithmApplier } from './algorithmLoader/algorithmApplier/algorithmApplier';
+import { AlgorithmApplier } from './loaders/algorithmLoader/algorithmApplier/algorithmApplier';
 
-const imageJ = new AlgorithmApplier();
-imageJ.runWithConfig();
+try {
+    const imageJ = new AlgorithmApplier(process.env.IMAGEJ_RUN_ALGORITHM);
+    imageJ.runWithConfig();
+}
+catch(e) {
+    console.error(e);
+}

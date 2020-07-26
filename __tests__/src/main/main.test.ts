@@ -1,10 +1,5 @@
 
-const consoleLog = jest.spyOn(console, 'log')
-    .mockImplementation((s :string) => {
-        return s;
-    });
-
-jest.mock('../../src/algorithmLoader/algorithmApplier/algorithmApplier', () => {
+jest.mock('../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier', () => {
   return {
     AlgorithmApplier : jest.fn().mockImplementation(
       () => { return {
@@ -17,14 +12,20 @@ jest.mock('../../src/algorithmLoader/algorithmApplier/algorithmApplier', () => {
 
 describe('Main', () => {
  
+  beforeEach(() => {
+    console.log = jest.fn(log => {
+      return log;
+    });
+  })
+
   afterEach(() => {
     jest.clearAllMocks();
   });
     
   it('runWithConfig should be run when executing main.ts', () => {
       
-    require('../../src/main');
-    expect(consoleLog).toBeCalledWith('AlgorithmApplier.runWithConfig() was called');
+    require('../../../src/main');
+    expect(console.log).toBeCalledWith('AlgorithmApplier.runWithConfig() was called');
   });
 
 });
