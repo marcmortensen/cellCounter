@@ -28,8 +28,6 @@ class ImageJLoader {
         ImageJObject = NodeJavaCore.import('net.imagej.ImageJ');
       } catch (e) {
         
-          // eslint-disable-next-line no-debugger
-          debugger;
           console.error(e.message);
           throw new Error('IMAGEJ_DIRECTORY_INSTALLED path on config did not lead to a valid folder where imageJ is installed');
       }   

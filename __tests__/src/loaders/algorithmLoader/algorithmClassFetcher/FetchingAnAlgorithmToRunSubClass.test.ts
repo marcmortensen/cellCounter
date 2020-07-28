@@ -1,6 +1,6 @@
 import { AlgorithmClassFetcher } from '../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher';
 import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
-import { testFooAlgorithmClass } from '../../../../testHelpers/algorithmClassFetcherTypes';
+import { testFooAlgorithmClass } from '../../../../testHelpers/algorithmClassFetcher/algorithmClassFetcherTypes';
 
 jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassRepository', () => {
 

@@ -1,4 +1,4 @@
-import { AlgorithmToRun } from '../../src/algorithms/algorithmToRun';
+import { AlgorithmToRun } from '../../../src/algorithms/algorithmToRun';
 
 export class testFooAlgorithmClass extends AlgorithmToRun {
 
