@@ -1,7 +1,6 @@
 import { IConfigRun } from '../common/types';
 import { loadImagesFromPath } from '../loaders/imageLoader/imageLoader';
 
-
 export abstract class AlgorithmToRun {
     
     name: string;

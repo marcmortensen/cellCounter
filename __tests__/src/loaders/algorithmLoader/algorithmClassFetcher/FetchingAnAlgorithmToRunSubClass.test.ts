@@ -13,7 +13,7 @@ jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algo
     }
   }
   return {
-    classes : {testFooAlgorithmClass}
+    classes: {testFooAlgorithmClass}
   }
 });
 
@@ -27,8 +27,8 @@ describe('AlgorithmClassFetcher testing with classes extending from AlgorithmToR
 
   it('should return the expected algorithmToRun class by the class string name given', () => {
     classFetcher = new AlgorithmClassFetcher('testFooAlgorithmClass', 'fooName');
-    expect( classFetcher ).toBeInstanceOf( AlgorithmToRun )
-    expect( classFetcher ).toEqual(new testFooAlgorithmClass('fooName'));
+    expect(classFetcher).toBeInstanceOf( AlgorithmToRun )
+    expect(classFetcher).toEqual(new testFooAlgorithmClass('fooName'));
   });
 
 });

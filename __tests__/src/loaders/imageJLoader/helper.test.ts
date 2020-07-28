@@ -1,4 +1,4 @@
-import { addToClassPath } from "../../../../src/loaders/imageJLoader/helper";
+import { addToClassPath } from '../../../../src/loaders/imageJLoader/helper';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs'); 

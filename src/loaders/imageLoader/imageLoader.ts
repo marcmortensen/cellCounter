@@ -1,5 +1,5 @@
-import {readdirSync, lstatSync } from 'fs';
-import {join} from 'path';
+import { readdirSync, lstatSync } from 'fs';
+import { join } from 'path';
 
 const loadImagesFromPath = (dir: string): Array<string>  => {
     let images: Array<string> = [];

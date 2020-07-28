@@ -8,7 +8,7 @@ jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algo
     }
   }
   return {
-    classes : {testFooAlgorithmClass}
+    classes: {testFooAlgorithmClass}
   }
 });
 

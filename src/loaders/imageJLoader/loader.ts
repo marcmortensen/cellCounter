@@ -1,7 +1,7 @@
-import {EventEmitter} from 'events';
-import NodeJavaCore = require('java');
-import {addToClassPath} from './helper';
+import { EventEmitter } from 'events';
+import { addToClassPath } from './helper';
 import { IConfigurationApp } from '../../common/types';
+import NodeJavaCore = require('java');
 
 class ImageJLoader {
 

@@ -1,4 +1,4 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../../../src/common/types';
 import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
@@ -9,10 +9,10 @@ class DummyAlgorithmClass extends AlgorithmToRun {
     throw new Error('An error was thrown on the start method!');
   }
 
-  hasValidInputConfig():boolean { return true;}
+  hasValidInputConfig(): boolean { return true;}
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  loadConfig():void {}
+  loadConfig(): void {}
 } 
 
 const algorithmDummyClass = new DummyAlgorithmClass('DummyClass');
@@ -20,7 +20,7 @@ const mockAlgorithmClassStartFn = jest.spyOn(algorithmDummyClass, 'start')
 
 jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher', () => {
   return {
-    AlgorithmClassFetcher : jest.fn().mockImplementation(
+    AlgorithmClassFetcher: jest.fn().mockImplementation(
       () => { return algorithmDummyClass })
   }
 });
@@ -28,16 +28,16 @@ jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algo
 jest.mock('../../../../../src/loaders/imageJLoader/loader', () => {
   return {
     ImageJLoader : jest.fn().mockImplementation(
-      () => { return  {
-        load(_config: IConfigurationApp, event: EventEmitter): void {
-          event.emit('ready', 'ImageJObject');
-        }
-
-      }})
+      () => { 
+        return  {
+          load(_config: IConfigurationApp, event: EventEmitter): void {
+            event.emit('ready', 'ImageJObject');
+          }
+        }})
   }
 });
 
-describe('Algorithm Applier when start fails', () => {
+describe('Algorithm applier when start fails', () => {
 
   beforeEach( () => {
     console.error = jest.fn(err => {

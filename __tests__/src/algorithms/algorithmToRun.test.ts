@@ -68,7 +68,5 @@ describe('Testing AlgorithmToRun class behaviour', () => {
     algorithmToRun.loadConfig();
     expect(algorithmToRun.config).toEqual(exepctedConfig);
   });
-
-
    
 });

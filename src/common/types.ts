@@ -5,7 +5,7 @@ export interface IConfigurationApp {
     }
   }
 
-  export interface IConfigRun {
-      inputImagesPath: Array<string>;
-      outputPath: string;
-  }
+export interface IConfigRun {
+    inputImagesPath: Array<string>;
+    outputPath: string;
+}

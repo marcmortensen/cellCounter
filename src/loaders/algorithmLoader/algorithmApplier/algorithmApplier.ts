@@ -1,5 +1,5 @@
-import {ImageJLoader} from '../../imageJLoader/loader';
-import {EventEmitter} from 'events';
+import { ImageJLoader } from '../../imageJLoader/loader';
+import { EventEmitter } from 'events';
 import { AlgorithmClassFetcher } from '../algorithmClassFetcher/algorithmClassFetcher';
 import { AlgorithmToRun } from '../../../algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../common/types';

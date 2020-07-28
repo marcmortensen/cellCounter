@@ -61,6 +61,4 @@ describe('Testing FilterGauss class behaviour', () => {
     expect(algorithmToRun.config).toEqual(exepctedConfig);
   });
 
-
-   
 });

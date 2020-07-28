@@ -1,4 +1,4 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../../../src/common/types';
 import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
@@ -6,12 +6,6 @@ import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/alg
 const loadImagesFromPath = require('../../../../../src/loaders/imageLoader/imageLoader');
 
 loadImagesFromPath.loadImagesFromPath = jest.fn().mockReturnValue([]);
-
-const consoleLog = jest
-  .spyOn(console, 'log')
-  .mockImplementation((s :string) => {
-    return s;
-  });
 
 class DummyAlgorithmClass extends AlgorithmToRun {
   start(ij: string): void {
@@ -50,6 +44,12 @@ jest.mock('../../../../../src/loaders/imageJLoader/loader', () => {
 
 describe('Algorithm Applier, with all the needed algorithToRun config!', () => {
  
+  beforeEach( () => {
+    console.log = jest.fn(log => {
+      return log;
+    });
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -58,11 +58,11 @@ describe('Algorithm Applier, with all the needed algorithToRun config!', () => {
 
     const applier = new AlgorithmApplier('foo');
     applier.runWithConfig()
-    expect(consoleLog).toBeCalledWith('==> Starting ImageJ');
+    expect(console.log).toBeCalledWith('==> Starting ImageJ');
     expect(mockAlgorithmClassHasValidInputConfigFn).toBeCalled();
     expect(mockAlgorithmClassLoadConfigFn).toBeCalled();
     expect(mockAlgorithmClassStartFn).toBeCalled();
-    expect(consoleLog).toBeCalledWith('some code to execute with the help of out freind ImageJObject');
+    expect(console.log).toBeCalledWith('some code to execute with the help of out freind ImageJObject');
   });
 
 });

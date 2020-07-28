@@ -1,4 +1,4 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 import { ImageJLoader } from '../../../../src/loaders/imageJLoader/loader';
 import { IConfigurationApp } from '../../../../src/common/types';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -21,7 +21,7 @@ describe('ImageJ loader', () => {
   it('loadImageJ should throw an emit with the object ImageJLoaded', () => {
 
     const config: IConfigurationApp = { 
-      imageJ:{
+      imageJ: {
         dir: 'fooDirectory',
       }
     };
@@ -59,7 +59,7 @@ describe('ImageJ loader', () => {
   it('loadImageJ should throw an error if cant load java class imageJ', () => {
 
     const config: IConfigurationApp = { 
-      imageJ:{
+      imageJ: {
         dir: 'fooDirectory',
       }
     };

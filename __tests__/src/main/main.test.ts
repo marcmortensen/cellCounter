@@ -10,7 +10,7 @@ jest.mock('../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplie
   }
 });
 
-describe('Main', () => {
+describe('Main success execution', () => {
  
   beforeEach(() => {
     console.log = jest.fn(log => {

@@ -1,4 +1,4 @@
-import { loadImagesFromPath } from "../../../../src/loaders/imageLoader/imageLoader";
+import { loadImagesFromPath } from '../../../../src/loaders/imageLoader/imageLoader';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs'); 
@@ -31,7 +31,6 @@ describe('Testing loading image path function', () => {
       '/fooPath/image3.jpeg',
       '/fooPath/image4.jpg'
     ]);
-
   });
 
 });

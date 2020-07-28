@@ -1,5 +1,5 @@
-import {readdirSync, lstatSync } from 'fs';
-import {join} from 'path';
+import { readdirSync, lstatSync } from 'fs';
+import { join } from 'path';
 import NodeJavaCore = require('java');
 
 const addToClassPath = (dir: string) :void => {

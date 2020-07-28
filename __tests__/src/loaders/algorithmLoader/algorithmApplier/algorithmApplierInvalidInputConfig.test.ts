@@ -1,4 +1,4 @@
-import {EventEmitter} from 'events';
+import { EventEmitter } from 'events';
 import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../../../src/common/types';
 import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
@@ -7,10 +7,10 @@ class DummyAlgorithmClass extends AlgorithmToRun {
   start(ij: string): void {
     console.log('some code to execute with the help of out freind ' + ij);
   }
-  hasValidInputConfig():boolean { return false;}
+  hasValidInputConfig(): boolean { return false;}
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  loadConfig():void {}
+  loadConfig(): void {}
 } 
 
 const algorithmDummyClass = new DummyAlgorithmClass('DummyClass');
@@ -20,7 +20,7 @@ const mockAlgorithmClassLoadConfigFn = jest.spyOn(algorithmDummyClass, 'loadConf
 
 jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher', () => {
   return {
-    AlgorithmClassFetcher : jest.fn().mockImplementation(
+    AlgorithmClassFetcher: jest.fn().mockImplementation(
       () => { return algorithmDummyClass })
   }
 });
