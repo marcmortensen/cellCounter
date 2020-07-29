@@ -58,7 +58,7 @@ jobs:
       uses: SpicyPizza/create-envfile@v1
       with:
         envkey_RUN_E2E_TESTS: "true"
-        envkey_IMAGEJ_DIRECTORY_INSTALLED: "${{ github.workspace }}/Fiji.app"
+        envkey_IMAGEJ_DIRECTORY_INSTALLED: "/home/runner/work/cellCounter/cellCounter/Fiji.app"
 
     - uses: pCYSl5EDgo/cat@master
       id: hello
