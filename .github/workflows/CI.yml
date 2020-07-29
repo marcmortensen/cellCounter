@@ -54,11 +54,10 @@ jobs:
     - name: unzip Fiji
       run: unzip fiji-linux64.zip 
 
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
-      with:
-        envkey_RUN_E2E_TESTS: "true"
-        envkey_IMAGEJ_DIRECTORY_INSTALLED: "/home/runner/work/cellCounter/cellCounter/Fiji.app"
+    - uses: finnp/create-file-action@1.0.0
+      env:
+        FILE_NAME: ".env"
+        FILE_DATA: "RUN_E2E_TESTS='true'\nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'"
 
     - uses: pCYSl5EDgo/cat@master
       id: hello
