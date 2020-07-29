@@ -9,7 +9,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -21,6 +21,19 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+
+    # Runs a single command using the runners shell
+    - name: get Fiji(ImageJ) zip
+      run: wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip
+      
+    - name: unzip Fiji
+      run: unzip fiji-linux64.zip 
+
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v1
+      with:
+        envkey_RUN_E2E_TESTS: 'true'
+        envkey_IMAGEJ_DIRECTORY_INSTALLED: '${{ github.workspace }}/Fiji.app'
 
     - name: Install Dependencies
       run: npm install
