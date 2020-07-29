@@ -29,10 +29,8 @@ jobs:
     - name: unzip Fiji
       run: unzip fiji-linux64.zip 
 
-    - uses: finnp/create-file-action@1.0.0
-      env:
-        FILE_NAME: ".env"
-        FILE_DATA: "RUN_E2E_TESTS=true \nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'"
+    - uses: create .env File
+      run: printf "RUN_E2E_TESTS='true'\nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'\n" > ".env"
 
     - uses: pCYSl5EDgo/cat@master
       id: hello
@@ -42,7 +40,7 @@ jobs:
     - run: echo $TEXT
       env:
         TEXT: ${{ steps.hello.outputs.text }}
-        
+
     - name: Install Dependencies
       run: npm install
       
