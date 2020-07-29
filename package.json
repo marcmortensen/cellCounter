@@ -29,7 +29,7 @@
     "start": "node -r dotenv/config ./build/src/main.js",
     "debug": "node --inspect-brk ./build/src/main.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --silent --coverage",
+    "test": "jest --coverage",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:watch": "jest --watch"
   },
