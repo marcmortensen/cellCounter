@@ -32,7 +32,7 @@ jobs:
     - uses: finnp/create-file-action@1.0.0
       env:
         FILE_NAME: ".env"
-        FILE_DATA: "RUN_E2E_TESTS='true'\nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'"
+        FILE_DATA: "RUN_E2E_TESTS=true \nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'"
 
     - name: Install Dependencies
       run: npm install
