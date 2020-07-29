@@ -29,11 +29,15 @@ jobs:
     - name: unzip Fiji
       run: unzip fiji-linux64.zip 
 
+    - run: echo $npm_config_cache
+        env:
+          npm_config_cache: ${{ github.workspace }}
+
     - name: Make envfile
       uses: SpicyPizza/create-envfile@v1
       with:
         envkey_RUN_E2E_TESTS: 'true'
-        envkey_IMAGEJ_DIRECTORY_INSTALLED: '${{ GITHUB_WORKSPACE }}/Fiji.app'
+        envkey_IMAGEJ_DIRECTORY_INSTALLED: '${{ github.workspace }}/Fiji.app'
 
     - name: Install Dependencies
       run: npm install
