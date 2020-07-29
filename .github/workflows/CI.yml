@@ -29,7 +29,7 @@ jobs:
     - name: unzip Fiji
       run: unzip fiji-linux64.zip 
 
-    - uses: create .env File
+    - name: create .env File
       run: printf "RUN_E2E_TESTS='true'\nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'\n" > ".env"
 
     - uses: pCYSl5EDgo/cat@master
