@@ -60,6 +60,15 @@ jobs:
         envkey_RUN_E2E_TESTS: "true"
         envkey_IMAGEJ_DIRECTORY_INSTALLED: "${{ github.workspace }}/Fiji.app"
 
+    - uses: pCYSl5EDgo/cat@master
+      id: hello
+      with:
+        path: .env
+
+    - run: echo $TEXT
+      env:
+        TEXT: ${{ steps.hello.outputs.text }}
+
     - name: Install Dependencies
       run: npm install
       
