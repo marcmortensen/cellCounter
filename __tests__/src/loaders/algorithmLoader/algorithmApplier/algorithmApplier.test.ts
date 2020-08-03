@@ -2,13 +2,14 @@ import { EventEmitter } from 'events';
 import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../../../src/common/types';
 import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
+import { IImageJ } from '../../../../../src/common/imageJTypes';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const loadImagesFromPath = require('../../../../../src/loaders/imageLoader/imageLoader');
 
 loadImagesFromPath.loadImagesFromPath = jest.fn().mockReturnValue([]);
 
 class DummyAlgorithmClass extends AlgorithmToRun {
-  start(ij: string): void {
+  start(ij: IImageJ): void {
     console.log('some code to execute with the help of out freind ' + ij);
   }
   hasValidInputConfig():boolean { return true;}

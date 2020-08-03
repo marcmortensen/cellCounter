@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 import { AlgorithmClassFetcher } from '../algorithmClassFetcher/algorithmClassFetcher';
 import { AlgorithmToRun } from '../../../algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../common/types';
+import { IImageJ } from '../../../common/imageJTypes';
 
 class AlgorithmApplier {
 
@@ -23,8 +24,7 @@ class AlgorithmApplier {
       console.log('==> Starting ImageJ');
     });
   
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this.event.on('ready', async (ij : any) =>  {
+    this.event.on('ready', async (ij : IImageJ) =>  {
   
       try {
         this.algorithm.start(ij);

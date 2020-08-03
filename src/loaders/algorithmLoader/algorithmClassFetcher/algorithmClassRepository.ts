@@ -1,7 +1,9 @@
-import {FilterGauss} from '../../../algorithms/filterGauss/filterGauss';
+import { FilterGauss } from '../../../algorithms/filterGauss/filterGauss';
+import { CellCounter } from '../../../algorithms/cellCounter/cellCounter';
 
 const classes = {
-  FilterGauss
+  FilterGauss,
+  CellCounter
 };
 
 export {classes};

@@ -2,10 +2,11 @@ import { EventEmitter } from 'events';
 import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../../../src/common/types';
 import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
+import { IImageJ } from '../../../../../src/common/imageJTypes';
 
 class DummyAlgorithmClass extends AlgorithmToRun {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  start(_: string): void {
+  start(_ij: IImageJ): void {
     throw new Error('An error was thrown on the start method!');
   }
 
