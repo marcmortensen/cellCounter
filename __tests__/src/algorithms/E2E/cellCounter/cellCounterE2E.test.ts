@@ -23,6 +23,7 @@ describe('ImageJ-CellCounter-Run', () => {
   });
 
   afterEach(() => {
+    removeDirContents(outputFolder + 'csv/');
     removeDirContents(outputFolder);
   })
   

@@ -16,8 +16,7 @@ This project is intended to be used with the latest Active LTS release of [Node.
 ## TODO
 
 * add .env so we can load config from there.
-* add test using .env so we can know for sure that the config is good, and that the imageJ behaves as expected (filter gauss on clown.jpg).
-* start implement cell counter using imageJ
+* make options configurable like what alg to use or disregard cells due to their size.
 
 ## License
 Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/master/LICENSE) file for details.
