@@ -53,7 +53,7 @@ describe('ImageJ loader', () => {
 
     expect(eventEmit).toHaveBeenCalledTimes(2);
     expect(eventEmit).toBeCalledWith('booting');
-    expect(eventEmit).toBeCalledWith('ready', dummyImageJClassLoaded);
+    expect(eventEmit).toBeCalledWith('ready', dummyImageJClassLoaded, nodeJavaCore);
   });
 
   it('loadImageJ should throw an error if cant load java class imageJ', () => {

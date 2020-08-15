@@ -4,6 +4,7 @@ import { AlgorithmClassFetcher } from '../algorithmClassFetcher/algorithmClassFe
 import { AlgorithmToRun } from '../../../algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../common/types';
 import { IImageJ } from '../../../common/imageJTypes';
+import { NodeAPI } from 'java';
 
 class AlgorithmApplier {
 
@@ -24,10 +25,10 @@ class AlgorithmApplier {
       console.log('==> Starting ImageJ');
     });
   
-    this.event.on('ready', async (ij : IImageJ) =>  {
+    this.event.on('ready', async (ij : IImageJ, nodeJavaCore: NodeAPI ) =>  {
   
       try {
-        this.algorithm.start(ij);
+        this.algorithm.start(ij, nodeJavaCore);
       } catch (e) {
           console.error(e);
       }   

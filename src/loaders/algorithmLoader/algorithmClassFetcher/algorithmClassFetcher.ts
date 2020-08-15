@@ -11,7 +11,7 @@ class AlgorithmClassFetcher {
         try {
             subClassOfAlgorithmToRun = new classes[className](args); 
         } catch (e) {
-            throw new Error('Algorothm to run: ' + className + 
+            throw new Error('Algorithm to run: ' + className + 
             ' was not found in algorithmClassRepository.ts, either the name on the config is wrong or you forgot to add the new class!');
         } 
 

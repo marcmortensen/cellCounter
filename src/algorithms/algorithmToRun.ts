@@ -1,6 +1,7 @@
 import { IConfigRun } from '../common/types';
 import { loadImagesFromPath } from '../loaders/imageLoader/imageLoader';
 import { IImageJ } from '../common/imageJTypes';
+import { NodeAPI } from 'java';
 
 export abstract class AlgorithmToRun {
     
@@ -23,5 +24,5 @@ export abstract class AlgorithmToRun {
       };
   }
 
-    abstract start(imageJObject: IImageJ): void;
+    abstract start(imageJObject: IImageJ, nodeJavaCore: NodeAPI): void;
 }

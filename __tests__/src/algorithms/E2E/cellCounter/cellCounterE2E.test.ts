@@ -2,9 +2,10 @@ import { skipTestOnCondition } from '../../../../testHelpers/skipTestOnCondition
 import { rootPath as path } from '../../../../testHelpers/rootPathLoader/rootPathLoader';
 import { removeDirContents } from '../../../../testHelpers/removeDirContents';
 import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
+import { existsSync } from 'fs';
 
 const rootPath = path();
-describe('ImageJ Filter Gauss Run', () => {
+describe('ImageJ-CellCounter-Run', () => {
 
   const outputFolder = rootPath + '/__tests__/img/cellCounter/output/';
   const isImageJInstallPathSet :boolean = process.env.IMAGEJ_DIRECTORY_INSTALLED? true : false;
@@ -29,15 +30,17 @@ describe('ImageJ Filter Gauss Run', () => {
     process.env = OLD_ENV;
   });
 
-  it('Filter gauss should apply a filter gauss and an image', () => {
+
+  it('CellCounter should count the cells and return an image with cells numered and a csv with the data', () => {
     
-    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/'
+    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/4CellsWithNoise/'
     process.env.OUTPUT_FOLDER = rootPath + '/__tests__/img/cellCounter/output/'
 
     const imageJLoader = new AlgorithmApplier('CellCounter');
     imageJLoader.runWithConfig();
 
-    expect(1).toBe(1);
+    expect(existsSync(outputFolder + '4_cellsWithNoise.png')).toBeTruthy();
+    expect(existsSync(outputFolder + 'csv/cellsWithNoise.csv')).toBeTruthy();
 
   });
 

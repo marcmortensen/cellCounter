@@ -38,7 +38,7 @@ describe('AlgorithmClassFetcher testing fails', () => {
 
     expect(() => {
       new AlgorithmClassFetcher('fooName', 'fooName')
-    }).toThrow('Algorothm to run: fooName was not found in algorithmClassRepository.ts, either the name on the config is wrong or you forgot to add the new class!');
+    }).toThrow('Algorithm to run: fooName was not found in algorithmClassRepository.ts, either the name on the config is wrong or you forgot to add the new class!');
 
   });
 

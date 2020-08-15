@@ -1,16 +1,16 @@
 import { IConfigRun } from '../../../../src/common/types';
-import { FilterGauss } from '../../../../src/algorithms/filterGauss/filterGauss';
+import { CellCounter } from '../../../../src/algorithms/cellCounter/cellCounter';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const loadImagesFromPath = require('../../../../src/loaders/imageLoader/imageLoader');
 
-describe('Testing FilterGauss class behaviour', () => {
+describe('Testing CellCounter class behaviour', () => {
   
-  let algorithmToRun: FilterGauss;
+  let algorithmToRun: CellCounter;
   
   const OLD_ENV = process.env;
 
   beforeEach(() => {
-    algorithmToRun = new FilterGauss('FooAlgorithm');
+    algorithmToRun = new CellCounter('FooAlgorithm');
     process.env = { ...OLD_ENV };
   });
 
