@@ -1,4 +1,4 @@
-# cell-counter
+# CellCounter
 
 Hello, this project intends to bridge imageJ and nodeJs following the idea on [imagej-node](https://github.com/imagej/imagej-node) as a base, the main idea is to create a wrapper so we can run imageJ in nodeJs. CellCounter does what it's name says, it count cells for a given folder following a defined algorithm. BUT the project is designed to be able to host many more algorithms and particularities, so feel free to contribute! 
 
@@ -25,7 +25,7 @@ Hello, this project intends to bridge imageJ and nodeJs following the idea on [i
 
 ## Getting Started
 
-This project is intended to be used with the latest Active LTS release of [Node.js][nodejs].
+This project is intended to be used with the latest Active LTS release of Node.js.
 
 1. Install NodeJs
 1. Install npm
@@ -37,7 +37,7 @@ This project is intended to be used with the latest Active LTS release of [Node.
 1. rename .env_example to .env and check the compulsory properties and optionals are for the algorithm to run.
 1. place the needed configurations into the .env file *you might need to comment some lines*
 1. run "npm start" 
-1. examine the results, you are now free to touch stuff like FILTER_MIN_SIZE or FILTER_GAUSS_SIGMAto have better results depending on your data.
+1. examine the results, you are now free to touch stuff like FILTER_MIN_SIZE or FILTER_GAUSS_SIGMA to have better results depending on your data.
  
 
  ## I want to add a new algorithm to run, how can I?
@@ -64,7 +64,6 @@ From there create a pull request and BANG! antoher algorithm added!
 + `test` - run tests,
 + `test:watch` - interactive watch mode to automatically re-run tests
 + `test:debug` - to debug using google's chromium console.
-
 
 ## License
 Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/master/LICENSE) file for details.
