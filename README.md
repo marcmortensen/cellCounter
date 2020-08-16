@@ -15,13 +15,13 @@ Hello, this project intends to bridge imageJ and nodeJs following the idea on [i
 
     ![Input Img](/assets/img/result.png)
 
-    #Cell, Area
-    1,      35
-    2,      34
-    3,      27
-    4,      44
-    5,      70
-    ...    
+| #Cell | Area |
+|:-----:|------|
+|   1   |  35  |
+|   2   |  34  |
+|   3   |  27  |
+|   4   |  44  |
+| ...   |      |
 
 ## Getting Started
 
