@@ -28,7 +28,7 @@ jobs:
 
 
     - name: get Fiji(ImageJ) zip
-      run: wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip
+      run: wget https://downloads.imagej.net/fiji/archive/20200810-1942/fiji-linux64.zip
       
     - name: unzip Fiji
       run: unzip fiji-linux64.zip 
