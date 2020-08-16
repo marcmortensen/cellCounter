@@ -11,6 +11,7 @@ export interface IConfigRun {
 }
 
 export interface ICellFilter {
+  gaussSigma: number;
   minSize: number;
   maxSize: number;
   minCircularity: number;

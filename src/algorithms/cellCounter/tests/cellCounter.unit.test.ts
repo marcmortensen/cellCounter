@@ -74,6 +74,7 @@ describe('Testing CellCounter class behaviour', () => {
     process.env.FILTER_MAX_SIZE=null;
     process.env.FILTER_MIN_CIRCULARITY=null;
     process.env.FILTER_MAX_CIRCULARITY=null;
+    process.env.FILTER_GAUSS_SIGMA=null;
 
     const exepctedConfig: IConfigRun = { 
       inputImagesPath: ['../image1.png', '../image2.png'],
@@ -81,6 +82,7 @@ describe('Testing CellCounter class behaviour', () => {
     };
 
     const expectedFilters: ICellFilter = { 
+      gaussSigma:3,
       minSize:0,
       maxSize:10000000,
       minCircularity:0.0,
@@ -101,13 +103,15 @@ describe('Testing CellCounter class behaviour', () => {
     process.env.FILTER_MAX_SIZE='11';
     process.env.FILTER_MIN_CIRCULARITY='12';
     process.env.FILTER_MAX_CIRCULARITY='13';
+    process.env.FILTER_GAUSS_SIGMA='14';
 
 
     const expectedFilters: ICellFilter = { 
       minSize:10,
       maxSize:11,
       minCircularity:12,
-      maxCircularity:13
+      maxCircularity:13,
+      gaussSigma: 14
     };
 
     algorithmToRun.loadConfig();

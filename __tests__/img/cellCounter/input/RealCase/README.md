@@ -1,0 +1,3 @@
+We used image set [BBBC008v1](https://data.broadinstitute.org/bbbc/BBBC008/)  (Carpenter et al., Genome Biology, 2006), available from the Broad Bioimage Benchmark Collection [Ljosa et al., Nature Methods, 2012](http://dx.doi.org/10.1038/nmeth.2083)
+
+The image is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/) by [David Root](mailto:droot@broadinstitute.org) and [Anne Carpenter](http://www.broadinstitute.org/~anne/).

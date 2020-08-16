@@ -505,6 +505,7 @@ export interface IImageConverterLoader {
 }
 
 export interface IImagePlus {
+  updateAndDraw(): void;
   getChannelProcessor(): IImageProcessor;
 }
 

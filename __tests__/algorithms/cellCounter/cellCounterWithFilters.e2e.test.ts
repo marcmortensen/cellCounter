@@ -26,11 +26,12 @@ describe('ImageJ-CellCounter-Run', () => {
 
   it('CellCounter should count the cells applying the filters', () => {
     
-    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/4CellsWithoutNoise/'
-    process.env.OUTPUT_FOLDER = rootPath + '/__tests__/img/cellCounter/output/s2/'
-    process.env.FILTER_MIN_SIZE = '1800'
-    process.env.IMAGEJ_RUN_ALGORITHM = 'CellCounter'
-    process.env.THRESHOLD_ALGORITHM_NAME = 'Huang2'
+    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/4CellsWithoutNoise/';
+    process.env.OUTPUT_FOLDER = rootPath + '/__tests__/img/cellCounter/output/s2/';
+    process.env.FILTER_MIN_SIZE = '1800';
+    process.env.IMAGEJ_RUN_ALGORITHM = 'CellCounter';
+    process.env.THRESHOLD_ALGORITHM_NAME = 'Huang2';
+    process.env.FILTER_GAUSS_SIGMA = '3';
 
 
     require('../../../src/main');

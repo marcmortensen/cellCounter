@@ -30,6 +30,7 @@ export class CellCounter extends AlgorithmToRun {
     super(name);
     this.numberOfCells = new Array<number>();
     this.filters = { 
+      gaussSigma: 3,
       minSize: 0,
       maxSize: 10000000,
       minCircularity: 0.0,
@@ -38,8 +39,6 @@ export class CellCounter extends AlgorithmToRun {
   }
 
   hasValidInputConfig(): boolean {
-    // eslint-disable-next-line no-debugger
-    debugger;
     const hasValidInputConfig = super.hasValidInputConfig();
     const hasValidThresholdMethodName = process.env.THRESHOLD_ALGORITHM_NAME in ThresholdAlgorithm;
 
@@ -65,6 +64,10 @@ loadConfig(): void {
   this.filters.maxCircularity = (process.env.FILTER_MAX_CIRCULARITY)? 
     Number(process.env.FILTER_MAX_CIRCULARITY)
     : this.filters.maxCircularity;
+
+  this.filters.gaussSigma = (process.env.FILTER_GAUSS_SIGMA)? 
+    Number(process.env.FILTER_GAUSS_SIGMA)
+    : this.filters.gaussSigma;
 }
 
   start(ij: IImageJ, NodeJavaCore: NodeAPI): void {
@@ -89,7 +92,7 @@ loadConfig(): void {
         const imageConverter = ImageConverter(imgPlus);
         imageConverter.convertToGray8();
 
-        GaussianBlur().blurGaussian(imgPlus.getChannelProcessor(), 3)
+        GaussianBlur().blurGaussian(imgPlus.getChannelProcessor(), this.filters.gaussSigma);
 
         const res = AutoThreshold().exec(imgPlus, 
           this.thresholdAlgorithm,

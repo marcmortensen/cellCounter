@@ -27,10 +27,11 @@ describe('ImageJ-CellCounter-Run', () => {
 
   it('CellCounter should count the cells and return an image with cells numered and a csv with the data', () => {
     
-    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/4CellsWithNoise/'
-    process.env.OUTPUT_FOLDER = rootPath + '/__tests__/img/cellCounter/output/s1/'
-    process.env.IMAGEJ_RUN_ALGORITHM = 'CellCounter'
-    process.env.THRESHOLD_ALGORITHM_NAME = 'IsoData'
+    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/4CellsWithNoise/';
+    process.env.OUTPUT_FOLDER = rootPath + '/__tests__/img/cellCounter/output/s1/';
+    process.env.IMAGEJ_RUN_ALGORITHM = 'CellCounter';
+    process.env.THRESHOLD_ALGORITHM_NAME = 'IsoData';
+    process.env.FILTER_GAUSS_SIGMA = '3';
 
     require('../../../src/main');
 
