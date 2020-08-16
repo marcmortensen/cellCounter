@@ -1,5 +1,5 @@
 
-jest.mock('../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier', () => {
+jest.mock('../loaders/algorithmLoader/algorithmApplier/algorithmApplier', () => {
   return {
     AlgorithmApplier : jest.fn().mockImplementation(
       () => { return {
@@ -24,7 +24,7 @@ describe('Main success execution', () => {
     
   it('runWithConfig should be run when executing main.ts', () => {
       
-    require('../../../src/main');
+    require('../main');
     expect(console.log).toBeCalledWith('AlgorithmApplier.runWithConfig() was called');
   });
 

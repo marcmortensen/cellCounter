@@ -1,10 +1,11 @@
+import { AlgorithmToRun } from '../../../../algorithms/algorithmToRun';
+import { IImageJ } from '../../../../common/imageJTypes';
 import { EventEmitter } from 'events';
-import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
-import { IConfigurationApp } from '../../../../../src/common/types';
-import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
-import { IImageJ } from '../../../../../src/common/imageJTypes';
+import { IConfigurationApp } from '../../../../common/types';
+import { AlgorithmApplier } from '../algorithmApplier';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const loadImagesFromPath = require('../../../../../src/loaders/imageLoader/imageLoader');
+const loadImagesFromPath = require('../../../imageLoader/imageLoader');
 
 loadImagesFromPath.loadImagesFromPath = jest.fn().mockReturnValue([]);
 
@@ -23,14 +24,14 @@ const mockAlgorithmClassStartFn = jest.spyOn(algorithmDummyClass, 'start')
 const mockAlgorithmClassHasValidInputConfigFn = jest.spyOn(algorithmDummyClass, 'hasValidInputConfig')
 const mockAlgorithmClassLoadConfigFn = jest.spyOn(algorithmDummyClass, 'loadConfig')
 
-jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher', () => {
+jest.mock('../../algorithmClassFetcher/algorithmClassFetcher', () => {
   return {
     AlgorithmClassFetcher : jest.fn().mockImplementation(
       () => { return algorithmDummyClass })
   }
 });
 
-jest.mock('../../../../../src/loaders/imageJLoader/loader', () => {
+jest.mock('../../../imageJLoader/loader', () => {
   return {
     ImageJLoader : jest.fn().mockImplementation(
       () => { return  {

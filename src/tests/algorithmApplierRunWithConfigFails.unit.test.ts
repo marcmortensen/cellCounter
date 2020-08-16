@@ -1,4 +1,4 @@
-jest.mock('../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier', () => {
+jest.mock('../loaders/algorithmLoader/algorithmApplier/algorithmApplier', () => {
   return {
     AlgorithmApplier : jest.fn().mockImplementation(
       () => { return {
@@ -23,9 +23,8 @@ describe('Main AlgorithmApplier fails on runWithConfig', () => {
     
   it('if runWithConfig throws an execption it should be catcehd and displayed', () => {
 
-    //require('../../../src/main');
-    //expect(console.error).toReturnWith('some error on the runWithConfig method in AlgorithmApplier');
-    expect(1).toBe(1);
+    require('../main');
+    expect(console.error).toReturnWith('some error on the runWithConfig method in AlgorithmApplier');
   });
 
 });

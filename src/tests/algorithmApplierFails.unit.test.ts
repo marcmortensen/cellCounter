@@ -1,4 +1,4 @@
-jest.mock('../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier', () => {
+jest.mock('../loaders/algorithmLoader/algorithmApplier/algorithmApplier', () => {
   return {
     AlgorithmApplier : jest.fn().mockImplementation(
       () => { 
@@ -22,7 +22,7 @@ describe('new AlgorithmApplier fails on main', () => {
 
   it('if new AlgorithmApplier fails it should be captured and displayed', () => {
 
-    require('../../../src/main');
+    require('../main');
     expect(console.error).toReturnWith('some error on the creation of AlgorithmApplier');
   });
 

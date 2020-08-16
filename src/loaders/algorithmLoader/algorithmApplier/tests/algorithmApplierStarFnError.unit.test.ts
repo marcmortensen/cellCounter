@@ -1,8 +1,8 @@
 import { EventEmitter } from 'events';
-import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
-import { IConfigurationApp } from '../../../../../src/common/types';
-import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
-import { IImageJ } from '../../../../../src/common/imageJTypes';
+import { AlgorithmToRun } from '../../../../algorithms/algorithmToRun';
+import { IConfigurationApp } from '../../../../common/types';
+import { AlgorithmApplier } from '../algorithmApplier';
+import { IImageJ } from '../../../../common/imageJTypes';
 
 class DummyAlgorithmClass extends AlgorithmToRun {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

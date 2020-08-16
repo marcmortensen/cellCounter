@@ -1,15 +1,15 @@
-import { AlgorithmClassFetcher } from '../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassFetcher';
-import { AlgorithmToRun } from '../../../../../src/algorithms/algorithmToRun';
-import { testFooAlgorithmClass } from '../../../../testHelpers/algorithmClassFetcher/algorithmClassFetcherTypes';
+import { AlgorithmClassFetcher } from '../algorithmClassFetcher';
+import { testFooAlgorithmClass } from '../../../../../__tests__/testHelpers/types/algorithmClassFetcherTypes';
+import { AlgorithmToRun } from '../../../../algorithms/algorithmToRun';
 
-jest.mock('../../../../../src/loaders/algorithmLoader/algorithmClassFetcher/algorithmClassRepository', () => {
+jest.mock('../algorithmClassRepository', () => {
 
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const algorithmToRun = require('../../../../../src/algorithms/algorithmToRun');
+  const algorithmToRun = require('../../../../algorithms/algorithmToRun');
   class testFooAlgorithmClass extends algorithmToRun.AlgorithmToRun {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     start(_ij: string): void {
-      throw new Error("Method not implemented.");
+      throw new Error('Method not implemented.');
     }
   }
   return {

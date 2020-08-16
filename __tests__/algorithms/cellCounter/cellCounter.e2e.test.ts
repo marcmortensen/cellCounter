@@ -1,8 +1,8 @@
-import { skipTestOnCondition } from '../../../../testHelpers/skipTestOnCondition';
-import { rootPath as path } from '../../../../testHelpers/rootPathLoader/rootPathLoader';
-import { removeDirContents } from '../../../../testHelpers/removeDirContents';
-import { AlgorithmApplier } from '../../../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
+import { rootPath as path } from '../../testHelpers/rootPathLoader/rootPathLoader';
 import { existsSync } from 'fs';
+import { skipTestOnCondition } from '../../testHelpers/skipTestOnCondition';
+import { removeDirContents } from '../../testHelpers/removeDirContents';
+import { AlgorithmApplier } from '../../../src/loaders/algorithmLoader/algorithmApplier/algorithmApplier';
 
 const rootPath = path();
 describe('ImageJ-CellCounter-Run', () => {

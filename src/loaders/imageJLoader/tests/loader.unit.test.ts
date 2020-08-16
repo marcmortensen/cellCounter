@@ -1,10 +1,10 @@
 import { EventEmitter } from 'events';
-import { ImageJLoader } from '../../../../src/loaders/imageJLoader/loader';
-import { IConfigurationApp } from '../../../../src/common/types';
+import { ImageJLoader } from '../loader';
+import { IConfigurationApp } from '../../../common/types';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const nodeJavaCore = require('java');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const addToClassPath = require('../../../../src/loaders/imageJLoader/helper');
+const addToClassPath = require('../helper');
 
 describe('ImageJ loader', () => {
 

@@ -1,16 +1,24 @@
-import { IConfigRun } from '../../../../src/common/types';
-import { CellCounter } from '../../../../src/algorithms/cellCounter/cellCounter';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const loadImagesFromPath = require('../../../../src/loaders/imageLoader/imageLoader');
 
-describe('Testing CellCounter class behaviour', () => {
+import { AlgorithmToRun } from '../algorithmToRun';
+import { IConfigRun } from '../../common/types';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const loadImagesFromPath = require('../../../src/loaders/imageLoader/imageLoader');
+
+class FooAlgorithmToRun extends AlgorithmToRun {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  start(_imageJObject: any): void {
+    throw new Error("Method not implemented.");
+  }
+}
+
+describe('Testing AlgorithmToRun class behaviour', () => {
   
-  let algorithmToRun: CellCounter;
+  let algorithmToRun: FooAlgorithmToRun;
   
   const OLD_ENV = process.env;
 
   beforeEach(() => {
-    algorithmToRun = new CellCounter('FooAlgorithm');
+    algorithmToRun = new FooAlgorithmToRun('FooAlgorithm');
     process.env = { ...OLD_ENV };
   });
 
@@ -60,5 +68,5 @@ describe('Testing CellCounter class behaviour', () => {
     algorithmToRun.loadConfig();
     expect(algorithmToRun.config).toEqual(exepctedConfig);
   });
-
+   
 });
