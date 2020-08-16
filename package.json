@@ -6,12 +6,12 @@
     "node": ">= 12.13 <13"
   },
   "devDependencies": {
-    "@types/jest": "~26.0.0",
-    "@types/node": "~12.12.47",
+    "@types/java": "^0.9.0",
+    "@types/jest": "^26.0.10",
+    "@types/node": "^12.12.54",
     "@types/when": "^2.4.33",
     "@typescript-eslint/eslint-plugin": "~3.2.0",
     "@typescript-eslint/parser": "~3.2.0",
-    "@types/java": "^0.9.0",
     "eslint": "~7.2.0",
     "eslint-config-prettier": "~6.11.0",
     "eslint-plugin-jest": "~23.13.2",
@@ -19,9 +19,9 @@
     "nodemon": "^2.0.4",
     "prettier": "~2.0.5",
     "rimraf": "~3.0.2",
-    "ts-jest": "~26.1.0",
+    "ts-jest": "^26.1.4",
     "tsutils": "~3.17.0",
-    "typescript": "~3.9.4"
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "clean": "rimraf coverage build tmp",
@@ -30,7 +30,7 @@
     "start": "node -r dotenv/config ./build/src/main.js",
     "debug": "node --inspect-brk ./build/src/main.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --silent --coverage",
+    "test": "jest --silent --coverage --runInBand",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:watch": "jest --watch"
   },
@@ -40,7 +40,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "java": "^0.12.1",
-    "tslib": "~2.0.0",
+    "tslib": "^2.0.1",
     "when": "^3.7.8"
   }
 }
