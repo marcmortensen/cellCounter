@@ -8,7 +8,7 @@ import {
   IImageConverterLoader,
   IFileSaverLoader, 
   IAutoThresholdLoader,
-  ThresholdAlgorithms,
+  ThresholdAlgorithm,
   IByteImageProcessor, 
   IGaussianBlurLoader,
   IEDMLoader,
@@ -17,20 +17,58 @@ import {
   IImageJ} from '../../common/imageJTypes';
 import { NodeAPI } from 'java';
 import {basename, extname} from 'path';
+import { ICellFilter } from '../../common/types';
 
 export class CellCounter extends AlgorithmToRun {
 
   name: string;
   numberOfCells: number[];
+  thresholdAlgorithm: ThresholdAlgorithm;
+  filters: ICellFilter;
   
   constructor(name: string) {
     super(name);
     this.numberOfCells = new Array<number>();
+    this.filters = { 
+      minSize: 0,
+      maxSize: 10000000,
+      minCircularity: 0.0,
+      maxCircularity: 1.0
+    };
   }
+
+  hasValidInputConfig(): boolean {
+    // eslint-disable-next-line no-debugger
+    debugger;
+    const hasValidInputConfig = super.hasValidInputConfig();
+    const hasValidThresholdMethodName = process.env.THRESHOLD_ALGORITHM_NAME in ThresholdAlgorithm;
+
+    return hasValidInputConfig && hasValidThresholdMethodName;
+}
+
+loadConfig(): void {
+  super.loadConfig();
+  this.thresholdAlgorithm = ThresholdAlgorithm[process.env.THRESHOLD_ALGORITHM_NAME]
+  
+  this.filters.minSize = (process.env.FILTER_MIN_SIZE)? 
+    Number(process.env.FILTER_MIN_SIZE)
+    : this.filters.minSize;
+
+  this.filters.maxSize = (process.env.FILTER_MAX_SIZE)? 
+    Number(process.env.FILTER_MAX_SIZE)
+    : this.filters.maxSize;
+  
+  this.filters.minCircularity = (process.env.FILTER_MIN_CIRCULARITY)? 
+    Number(process.env.FILTER_MIN_CIRCULARITY)
+    : this.filters.minCircularity;
+
+  this.filters.maxCircularity = (process.env.FILTER_MAX_CIRCULARITY)? 
+    Number(process.env.FILTER_MAX_CIRCULARITY)
+    : this.filters.maxCircularity;
+}
 
   start(ij: IImageJ, NodeJavaCore: NodeAPI): void {
 
-      
       const ImgPlusLoader: IImagePlusLoader = NodeJavaCore.import('ij.ImagePlus');
       const ImageConverter: IImageConverterLoader = NodeJavaCore.import('ij.process.ImageConverter');
       const ImgPlusSaver: IFileSaverLoader = NodeJavaCore.import('ij.io.FileSaver');
@@ -39,9 +77,7 @@ export class CellCounter extends AlgorithmToRun {
       const EDM: IEDMLoader = NodeJavaCore.import('ij.plugin.filter.EDM');
       const ParticleAnalyzer: IParticleAnalyzerLoader = NodeJavaCore.import('ij.plugin.filter.ParticleAnalyzer');
       const ResultsTable: IResultsTableLoader = NodeJavaCore.import('ij.measure.ResultsTable');
-      
-
-      const thresholderAlgorithm = ThresholdAlgorithms.IsoData;
+    
 
       this.config.inputImagesPath.forEach((pathImage: string) => {
 
@@ -56,7 +92,7 @@ export class CellCounter extends AlgorithmToRun {
         GaussianBlur().blurGaussian(imgPlus.getChannelProcessor(), 3)
 
         const res = AutoThreshold().exec(imgPlus, 
-          thresholderAlgorithm,
+          this.thresholdAlgorithm,
           true,
           true,
           true,
@@ -75,8 +111,10 @@ export class CellCounter extends AlgorithmToRun {
           ParticleAnalyzerOptions.SHOW_OUTLINES,
           MeasurementsOptions.AREA,
           resultTable,
-          0.0,
-          10000000);
+          this.filters.minSize,
+          this.filters.maxSize,
+          this.filters.minCircularity,
+          this.filters.maxCircularity);
         particleAnalyzer.setHideOutputImage(true)
         particleAnalyzer.analyze(res[1]);
         const result = particleAnalyzer.getOutputImage();

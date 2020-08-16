@@ -24,21 +24,22 @@ describe('ImageJ-CellCounter-Run', () => {
     process.env = OLD_ENV;
   });
 
-
-  it('CellCounter should count the cells and return an image with cells numered and a csv with the data', () => {
+  it('CellCounter should count the cells applying the filters', () => {
     
-    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/4CellsWithNoise/'
-    process.env.OUTPUT_FOLDER = rootPath + '/__tests__/img/cellCounter/output/s1/'
+    process.env.INPUT_IMAGE_FOLDER = rootPath + '/__tests__/img/cellCounter/input/4CellsWithoutNoise/'
+    process.env.OUTPUT_FOLDER = rootPath + '/__tests__/img/cellCounter/output/s2/'
+    process.env.FILTER_MIN_SIZE = '1800'
     process.env.IMAGEJ_RUN_ALGORITHM = 'CellCounter'
-    process.env.THRESHOLD_ALGORITHM_NAME = 'IsoData'
+    process.env.THRESHOLD_ALGORITHM_NAME = 'Huang2'
+
 
     require('../../../src/main');
+    
+    expect(existsSync(rootPath + '/__tests__/img/cellCounter/output/s2/3_cells.png')).toBeTruthy();
+    expect(existsSync(rootPath + '/__tests__/img/cellCounter/output/s2/csv/cells.csv')).toBeTruthy();
 
-    expect(existsSync(rootPath + '/__tests__/img/cellCounter/output/s1/4_cellsWithNoise.png')).toBeTruthy();
-    expect(existsSync(rootPath + '/__tests__/img/cellCounter/output/s1/csv/cellsWithNoise.csv')).toBeTruthy();
-
-    removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s1/csv/');
-    removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s1');
+    removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s2/csv');
+    removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s2')
 
   });
 

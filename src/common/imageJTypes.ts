@@ -265,7 +265,7 @@ export enum MeasurementsOptions {
   NaN_EMPTY_CELLS=0x80000
 }
 
-export enum ThresholdAlgorithms {
+export enum ThresholdAlgorithm {
 
   Default = 'Default',
   Huang = 'Huang',
@@ -458,7 +458,7 @@ export interface IGaussianBlur {
 export interface IAutoThreshold {
   exec(
     inputImg: IImagePlus,
-    thresholdAlgorithmName: ThresholdAlgorithms,
+    thresholdAlgorithmName: ThresholdAlgorithm,
     noWhite: boolean,
     noBlack: boolean,
     doIwhite: boolean,

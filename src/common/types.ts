@@ -9,3 +9,11 @@ export interface IConfigRun {
     inputImagesPath: Array<string>;
     outputPath: string;
 }
+
+export interface ICellFilter {
+  minSize: number;
+  maxSize: number;
+  minCircularity: number;
+  maxCircularity: number;
+
+}
