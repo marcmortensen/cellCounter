@@ -13,7 +13,7 @@ Hello, this project intends to bridge imageJ and nodeJs following the idea on [i
 
 1. We output the result into the output directory in this case the following image with its csv.
 
-    ![Input Img](/assets/img/output.png)
+    ![Input Img](/assets/img/result.png)
 
     #Cell, Area
     1,      35
