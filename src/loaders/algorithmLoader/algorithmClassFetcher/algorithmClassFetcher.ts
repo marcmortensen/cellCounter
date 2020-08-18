@@ -1,5 +1,5 @@
-import { classes } from './algorithmClassRepository';
 import { AlgorithmToRun } from '../../../algorithms/algorithmToRun';
+import { classes } from './algorithmClassRepository/algorithmClassRepository';
 
 class AlgorithmClassFetcher {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types

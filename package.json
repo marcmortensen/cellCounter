@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "ImageJ operations on cell images",
   "engines": {
-    "node": ">= 12.13 <13"
+    "node": ">= 14.8.0"
   },
   "devDependencies": {
     "@types/java": "^0.9.0",
@@ -19,7 +19,7 @@
     "nodemon": "^2.0.4",
     "prettier": "~2.0.5",
     "rimraf": "~3.0.2",
-    "ts-jest": "^26.1.4",
+    "ts-jest": "^26.2.0",
     "tsutils": "~3.17.0",
     "typescript": "^3.9.7"
   },
@@ -30,7 +30,7 @@
     "start": "node -r dotenv/config ./build/src/main.js",
     "debug": "node --inspect-brk ./build/src/main.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --silent --coverage --runInBand",
+    "test": "jest --silent --coverage",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:watch": "jest --watch"
   },

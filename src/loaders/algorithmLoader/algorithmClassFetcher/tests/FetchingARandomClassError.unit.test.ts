@@ -1,6 +1,6 @@
 import { AlgorithmClassFetcher } from "../algorithmClassFetcher";
 
-jest.mock('../algorithmClassRepository', () => {
+jest.mock('../algorithmClassRepository/algorithmClassRepository', () => {
   class testFooAlgorithmClass {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     start(_ij: string): void {

@@ -1,7 +1,7 @@
 import { rootPath as path } from '../../testHelpers/rootPathLoader/rootPathLoader';
 import { existsSync } from 'fs';
 import { skipTestOnCondition } from '../../testHelpers/skipTestOnCondition';
-//import { removeDirContents } from '../../testHelpers/removeDirContents';
+import { removeDirContents } from '../../testHelpers/removeDirContents';
 
 const rootPath = path();
 describe('ImageJ-CellCounter-Run', () => {
@@ -38,8 +38,8 @@ describe('ImageJ-CellCounter-Run', () => {
     expect(existsSync(rootPath + '/__tests__/img/cellCounter/output/s1/4_cellsWithNoise.png')).toBeTruthy();
     expect(existsSync(rootPath + '/__tests__/img/cellCounter/output/s1/csv/cellsWithNoise.csv')).toBeTruthy();
 
-    //removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s1/csv/');
-    //removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s1');
+    removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s1/csv/');
+    removeDirContents(rootPath + '/__tests__/img/cellCounter/output/s1');
 
   });
 

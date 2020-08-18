@@ -1,8 +1,8 @@
 import { AlgorithmClassFetcher } from '../algorithmClassFetcher';
-import { testFooAlgorithmClass } from '../../../../../__tests__/testHelpers/types/algorithmClassFetcherTypes';
+import { testFooAlgorithmClass as FooAlgorithmClass } from '../../../../../__tests__/testHelpers/types/algorithmClassFetcherTypes';
 import { AlgorithmToRun } from '../../../../algorithms/algorithmToRun';
 
-jest.mock('../algorithmClassRepository', () => {
+jest.mock('../algorithmClassRepository/algorithmClassRepository', () => {
 
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const algorithmToRun = require('../../../../algorithms/algorithmToRun');
@@ -28,7 +28,7 @@ describe('AlgorithmClassFetcher testing with classes extending from AlgorithmToR
   it('should return the expected algorithmToRun class by the class string name given', () => {
     classFetcher = new AlgorithmClassFetcher('testFooAlgorithmClass', 'fooName');
     expect(classFetcher).toBeInstanceOf( AlgorithmToRun )
-    expect(classFetcher).toEqual(new testFooAlgorithmClass('fooName'));
+    expect(classFetcher).toEqual(new FooAlgorithmClass('fooName'));
   });
 
 });
