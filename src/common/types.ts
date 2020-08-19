@@ -1,13 +1,13 @@
 export interface IConfigurationApp {
-    imageJ: {
+  imageJ: {
       // Where is imageJ app located on the user machine
       dir: string
     }
   }
 
 export interface IConfigRun {
-    inputImagesPath: Array<string>;
-    outputPath: string;
+  inputImagesPath: Array<string>;
+  outputPath: string;
 }
 
 export interface ICellFilter {

@@ -2,11 +2,16 @@
 
 Hello, this project intends to bridge imageJ and nodeJs, the main idea is to create a wrapper so we can run imageJ in nodeJs. CellCounter does what it's name says, it count cells for a given folder following a defined algorithm. BUT the project is designed to be able to host many more algorithms and particularities, so feel free to contribute! 
 
+## CellCounter Algorithm:
+We need to specify an input folder and then for each image inside that folder the algorithm will run, in this example we show the steps taken by the cell counter from an input image, see the following:
+
+![Algorithm Img](/assets/img/algorithmCellCounter.png)
+
 ## How to use:
 
 1. So we have a folder filled with photos such as the following:
     ![Input Img](/assets/img/input.png)
-    Format: ![ see](__tests__/img/cellCounter/input/RealCase/README.md)
+    Format: ![see](__tests__/img/cellCounter/input/RealCase/README.md)
 
 1. We configure cell-Counter to use that directory with a .env file (there is an .env_example feel free to rename it to .env) [see](/src/algorithms/cellCounter/README.md)
 
