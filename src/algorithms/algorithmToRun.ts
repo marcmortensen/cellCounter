@@ -1,5 +1,7 @@
 import { IConfigRun } from '../common/types';
 import { loadImagesFromPath } from '../loaders/imageLoader/imageLoader';
+import { IImageJ } from '../common/imageJTypes';
+import { NodeAPI } from 'java';
 
 export abstract class AlgorithmToRun {
     
@@ -22,6 +24,5 @@ export abstract class AlgorithmToRun {
       };
   }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-    abstract start(imageJObject: any): void;
+    abstract start(imageJObject: IImageJ, nodeJavaCore: NodeAPI): void;
 }
