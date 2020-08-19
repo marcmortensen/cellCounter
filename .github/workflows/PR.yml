@@ -1,16 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: PR
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: 
-    - master
-    - develop
+on: 
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -27,6 +23,7 @@ jobs:
     - uses: actions/setup-node@v2-beta
       with:
         node-version: '14'
+
     - uses: actions/setup-java@v1
       with:
         java-version: '10' # The JDK version to make available on the path.
@@ -34,20 +31,32 @@ jobs:
         architecture: x64 # (x64 or x86) - defaults to x64
 
 
+    # We get the last version of Fiji, might need to change it as the same as CI.yml
     - name: get Fiji(ImageJ) zip
-      run: wget https://downloads.imagej.net/fiji/archive/20200810-1942/fiji-linux64.zip
+      run: wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip
       
     - name: unzip Fiji
       run: unzip fiji-linux64.zip 
-
-    - name: create .env File
-      run: printf "RUN_E2E_TESTS='true'\nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'\n" > ".env"
 
     - name: Install Dependencies
       run: npm install
       
     - name: Build
       run: npm run build
-      
+
     - name: Run tests
       run: npm run test
+
+    # See as a comment coverage without e2e
+    - uses: romeovs/lcov-reporter-action@v0.2.16
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        lcov-file: ./coverage/lcov.info
+
+    - name: create .env File
+      run: printf "RUN_E2E_TESTS='true'\nIMAGEJ_DIRECTORY_INSTALLED='${{ github.workspace }}/Fiji.app'\n" > ".env"
+    
+    # See tests with e2e!
+    - name: Run tests
+      run: npm run test
+

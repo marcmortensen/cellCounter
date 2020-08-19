@@ -10,7 +10,7 @@ const loadImagesFromPath = (dir: string): Array<string>  => {
       if (lstatSync(fullPath).isDirectory()){
         images = images.concat(loadImagesFromPath(fullPath));
       }
-      if ( /\.(jpe?g|png|gif|bmp)$/i.test(fullPath) ) {
+      if ( /\.(jpe?g|png|tif|bmp)$/i.test(fullPath) ) {
         images.push(fullPath)
       }
     })

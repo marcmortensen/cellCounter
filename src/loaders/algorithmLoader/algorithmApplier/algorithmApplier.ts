@@ -3,6 +3,8 @@ import { EventEmitter } from 'events';
 import { AlgorithmClassFetcher } from '../algorithmClassFetcher/algorithmClassFetcher';
 import { AlgorithmToRun } from '../../../algorithms/algorithmToRun';
 import { IConfigurationApp } from '../../../common/types';
+import { IImageJ } from '../../../common/imageJTypes';
+import { NodeAPI } from 'java';
 
 class AlgorithmApplier {
 
@@ -23,11 +25,10 @@ class AlgorithmApplier {
       console.log('==> Starting ImageJ');
     });
   
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this.event.on('ready', async (ij : any) =>  {
+    this.event.on('ready', async (ij : IImageJ, nodeJavaCore: NodeAPI ) =>  {
   
       try {
-        this.algorithm.start(ij);
+        this.algorithm.start(ij, nodeJavaCore);
       } catch (e) {
           console.error(e);
       }   
