@@ -34,7 +34,7 @@
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:watch": "jest --watch"
   },
-  "author": "Marc Mortensen <marcmortensen@gmail77.com>",
+  "author": "Marc Mortensen <marcmortensen77@gmail.com>",
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
