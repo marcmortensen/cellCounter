@@ -4,7 +4,7 @@ import { IConfigurationApp } from '../../../common/types';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const nodeJavaCore = require('java');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const addToClassPath = require('../helper');
+const addToClassPath = require('../addToClassPath');
 
 describe('ImageJ loader', () => {
 
