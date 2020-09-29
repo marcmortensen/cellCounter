@@ -1,4 +1,4 @@
-import { addToClassPath } from '../helper';
+import { addToClassPath } from '../addToClassPath';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs'); 
