@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { addToClassPath } from './helper';
+import { addToClassPath } from './addToClassPath';
 import { IConfigurationApp } from '../../common/types';
 import NodeJavaCore = require('java');
 import { IImageJLoader } from '../../common/imageJTypes';
